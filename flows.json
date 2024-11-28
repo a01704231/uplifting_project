@@ -1,0 +1,112 @@
+[
+    {
+        "id": "b123f67c9310ac6c",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "button",
+        "type": "ui_button",
+        "z": "b123f67c9310ac6c",
+        "name": "Start Scripts",
+        "group": "d45914a6ec59a0c0",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Start",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "start",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 470,
+        "y": 200,
+        "wires": [
+            [
+                "function"
+            ]
+        ]
+    },
+    {
+        "id": "function",
+        "type": "function",
+        "z": "b123f67c9310ac6c",
+        "name": "Set Commands",
+        "func": "msg.payload = [\n    '/home/ulisess/anaconda3/envs/new_env/bin/python /home/ulisess/Downloads/proj/rn1_1.py',\n    '/home/ulisess/anaconda3/envs/new_env/bin/python /home/ulisess/Downloads/proj/rn2_1.py'\n];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 670,
+        "y": 200,
+        "wires": [
+            [
+                "split"
+            ]
+        ]
+    },
+    {
+        "id": "split",
+        "type": "split",
+        "z": "b123f67c9310ac6c",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 870,
+        "y": 200,
+        "wires": [
+            [
+                "exec"
+            ]
+        ]
+    },
+    {
+        "id": "exec",
+        "type": "exec",
+        "z": "b123f67c9310ac6c",
+        "command": "",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Execute Scripts",
+        "x": 1070,
+        "y": 200,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "d45914a6ec59a0c0",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "63cdfd451e171d47",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "63cdfd451e171d47",
+        "type": "ui_tab",
+        "name": "Infotaining",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
